@@ -1,4 +1,5 @@
 import { FunctionComponent } from 'react'
+import Tree from '../Tree/Tree'
 import classes from './Library.module.css'
 
 const items = [
@@ -11,12 +12,12 @@ function Library() {
   return (
     <div className={classes.flex}>
       {items.map((item) => (
-        <div key={item.id} className={classes.plant}>
-          <p>
-            <h1>{item.type}</h1>
-            <span>{item.variety}</span>
-          </p>
-        </div>
+        <Tree
+          id={item.id}
+          type={item.type}
+          variety={item.variety}
+          key={item.id}
+        />
       ))}
     </div>
   )
