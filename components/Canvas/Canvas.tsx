@@ -6,7 +6,7 @@ import classes from './Canvas.module.css'
 
 type CanvasType = {
   plants: Array<PlantType>
-  dropHandler: any // TODO function type
+  dropHandler: (item: PlantType, monitor: any) => {}
 }
 
 const Canvas: FunctionComponent<CanvasType> = function Canvas(
