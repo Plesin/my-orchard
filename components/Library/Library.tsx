@@ -1,4 +1,4 @@
-import { FunctionComponent } from 'react'
+import { useState, FunctionComponent } from 'react'
 import Tree from '../Tree/Tree'
 import classes from './Library.module.css'
 

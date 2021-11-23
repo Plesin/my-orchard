@@ -2,7 +2,7 @@ import { FunctionComponent } from 'react'
 import { useDrag } from 'react-dnd'
 import classes from './Tree.module.css'
 
-type Props = {
+export type TreeType = {
   id: string
   type: string
   variety: string
@@ -12,15 +12,15 @@ interface DropResult {
   name: string
 }
 
-const Tree: FunctionComponent<Props> = function Tree({ id, type, variety }) {
+const Tree: FunctionComponent<TreeType> = function Tree({ id, type, variety }) {
   const [{ isDragging }, drag] = useDrag(() => ({
     type: 'tree',
     item: { id, type, variety },
     end: (item, monitor) => {
       const dropResult = monitor.getDropResult<DropResult>()
-      if (item && dropResult) {
-        alert(`You dropped ${type} into ${dropResult.name}!`)
-      }
+      // if (item && dropResult) {
+      //   alert(`You dropped ${type} into ${dropResult.name}!`)
+      // }
     },
     collect: (monitor) => ({
       isDragging: monitor.isDragging(),
