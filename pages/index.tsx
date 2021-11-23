@@ -5,14 +5,14 @@ import { useState } from 'react'
 import Layout from '../components/Layout/Layout'
 import Library from '../components/Library/Library'
 import Canvas from '../components/Canvas/Canvas'
-import type { TreeType } from '../components/Tree/Tree'
+import type { PlantType } from '../../types'
 import { v4 as uuidv4 } from 'uuid'
 import styles from '../styles/Home.module.css'
 
 const Home: NextPage = () => {
   const [plants, setPlants] = useState([])
 
-  const addPlants = (newPlant: TreeType, monitor: any) => {
+  const addPlants = (newPlant: PlantType, monitor: any) => {
     const plantId: string = uuidv4()
     const plant = {
       ...newPlant,

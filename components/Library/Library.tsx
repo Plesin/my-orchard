@@ -1,5 +1,4 @@
-import { useState, FunctionComponent } from 'react'
-import Tree from '../Tree/Tree'
+import LibItem from '../LibItem/LibItem'
 import classes from './Library.module.css'
 
 const items = [
@@ -12,7 +11,7 @@ function Library() {
   return (
     <div className={classes.flex}>
       {items.map((item) => (
-        <Tree
+        <LibItem
           id={item.id}
           type={item.type}
           variety={item.variety}

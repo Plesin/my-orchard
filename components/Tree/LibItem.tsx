@@ -1,18 +1,17 @@
 import { FunctionComponent } from 'react'
 import { useDrag } from 'react-dnd'
-import classes from './Tree.module.css'
-
-export type TreeType = {
-  id: string
-  type: string
-  variety: string
-}
+import type { PlantType } from '../../types'
+import classes from './LibItem.module.css'
 
 interface DropResult {
   name: string
 }
 
-const Tree: FunctionComponent<TreeType> = function Tree({ id, type, variety }) {
+const Tree: FunctionComponent<PlantType> = function Tree({
+  id,
+  type,
+  variety,
+}) {
   const [{ isDragging }, drag] = useDrag(() => ({
     type: 'tree',
     item: { id, type, variety },
