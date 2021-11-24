@@ -3,3 +3,8 @@ export type PlantType = {
   type: string
   variety: string
 }
+
+export interface DndPlant extends PlantType {
+  left: number
+  top: number
+}

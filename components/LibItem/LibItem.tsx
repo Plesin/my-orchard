@@ -1,25 +1,25 @@
 import { FunctionComponent } from 'react'
 import { useDrag } from 'react-dnd'
-import type { PlantType } from '../../types'
+import { DndPlant } from '../../types'
 import classes from './LibItem.module.css'
 
 interface DropResult {
   name: string
 }
 
-const LibItem: FunctionComponent<PlantType> = function LibItem({
+const LibItem: FunctionComponent<DndPlant> = function LibItem({
   id,
   type,
   variety,
+  left,
+  top,
 }) {
-  const [{ isDragging }, drag] = useDrag(() => ({
+  const [{ isDragging }, source] = useDrag(() => ({
     type: 'LIB_ITEM',
-    item: { id, type, variety },
+    item: { id, type, variety, left, top },
     end: (item, monitor) => {
-      const dropResult = monitor.getDropResult<DropResult>()
-      // if (item && dropResult) {
-      //   alert(`You dropped ${type} into ${dropResult.name}!`)
-      // }
+      const offset = monitor.getClientOffset()
+      console.log(offset)
     },
     collect: (monitor) => ({
       isDragging: monitor.isDragging(),
@@ -28,7 +28,7 @@ const LibItem: FunctionComponent<PlantType> = function LibItem({
   }))
 
   return (
-    <div ref={drag} role="LIB_ITEM" key={id} className={classes.plant}>
+    <div ref={source} role="LIB_ITEM" key={id} className={classes.plant}>
       <h1>{type}</h1>
       <p>
         <span>{variety}</span>
