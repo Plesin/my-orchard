@@ -1,4 +1,4 @@
-import { useRef, RefObject, FunctionComponent } from 'react'
+import { useRef, FunctionComponent } from 'react'
 import { useDrop } from 'react-dnd'
 import Plant from '../Plant/Plant'
 import { DndPlant } from '../../types'
@@ -18,8 +18,8 @@ const Canvas: FunctionComponent<CanvasType> = function Canvas(
     drop: (item: DndPlant, monitor) => {
       const wrapPos = wrap.current.getBoundingClientRect()
       const offset = monitor.getClientOffset()
-      const left = Math.round(offset.x - wrapPos.left - 90)
-      const top = Math.round(offset.y - 90)
+      const left = Math.round(offset.x - wrapPos.left - item.mouseOffset.x)
+      const top = Math.round(offset.y - item.mouseOffset.y)
       // console.log(wrapPos, offset)
       // TODO - fix this
       const newItem = {
