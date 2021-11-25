@@ -1,14 +1,16 @@
 import React, { FunctionComponent } from 'react'
-import type { PlantType } from '../../types'
-import classes from '../LibItem/LibItem.module.css'
+import { DndPlant } from '../../types'
+import classes from '../Plant/Plant.module.css'
 
-const Plant: FunctionComponent<PlantType> = function Plant({
+const Plant: FunctionComponent<DndPlant> = function Plant({
   id,
   type,
   variety,
+  left,
+  top,
 }) {
   return (
-    <div key={id} className={classes.plant}>
+    <div key={id} className={classes.plant} style={{ left: left, top: top }}>
       <h1>{type}</h1>
       <p>
         <span>{variety}</span>

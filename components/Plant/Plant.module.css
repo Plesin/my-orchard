@@ -1,0 +1,16 @@
+.plant {
+  position: absolute;
+  left: 200px;
+  top: 300px;
+  cursor: move;
+  margin: 0.5rem;
+  color: white;
+  background: #f05133;
+  border: 0.1875em solid #0f1c3f;
+  border-radius: 50%;
+  box-shadow: 0.375em 0.375em 0 0 rgba(15, 28, 63, 0.125);
+  height: 180px;
+  width: 180px;
+  hyphens: auto;
+  text-align: center;
+}

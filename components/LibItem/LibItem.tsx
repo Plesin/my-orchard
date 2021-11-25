@@ -1,34 +1,43 @@
 import { FunctionComponent } from 'react'
-import { useDrag } from 'react-dnd'
-import type { PlantType } from '../../types'
+import { DragSource, DragSourceMonitor, ConnectDragSource } from 'react-dnd'
+import { DndPlantWithDragSource } from '../../types'
 import classes from './LibItem.module.css'
 
 interface DropResult {
   name: string
 }
 
-const LibItem: FunctionComponent<PlantType> = function LibItem({
+const cardSource = {
+  beginDrag(item: DndPlantWithDragSource, monitor: DragSourceMonitor) {
+    const elem = monitor.getSourceClientOffset()
+    const mouse = monitor.getInitialClientOffset() // mouse offset
+    const mouseOffset = {
+      x: mouse.x - elem.x,
+      y: mouse.y - elem.y,
+    }
+
+    return {
+      ...item,
+      mouseOffset,
+    }
+  },
+}
+
+function collect(connect, monitor: DragSourceMonitor) {
+  return {
+    connectDragSource: connect.dragSource(),
+    isDragging: monitor.isDragging(),
+  }
+}
+
+const LibItem: FunctionComponent<DndPlantWithDragSource> = function LibItem({
   id,
   type,
   variety,
+  connectDragSource,
 }) {
-  const [{ isDragging }, drag] = useDrag(() => ({
-    type: 'LIB_ITEM',
-    item: { id, type, variety },
-    end: (item, monitor) => {
-      const dropResult = monitor.getDropResult<DropResult>()
-      // if (item && dropResult) {
-      //   alert(`You dropped ${type} into ${dropResult.name}!`)
-      // }
-    },
-    collect: (monitor) => ({
-      isDragging: monitor.isDragging(),
-      handlerId: monitor.getHandlerId(),
-    }),
-  }))
-
-  return (
-    <div ref={drag} role="LIB_ITEM" key={id} className={classes.plant}>
+  return connectDragSource(
+    <div key={id} className={classes.plant}>
       <h1>{type}</h1>
       <p>
         <span>{variety}</span>
@@ -37,4 +46,4 @@ const LibItem: FunctionComponent<PlantType> = function LibItem({
   )
 }
 
-export default LibItem
+export default DragSource('LIB_ITEM', cardSource, collect)(LibItem)
