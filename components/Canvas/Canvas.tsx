@@ -12,15 +12,17 @@ type CanvasType = {
 const Canvas: FunctionComponent<CanvasType> = function Canvas(
   props: CanvasType
 ) {
-  const wrap = useRef(null)
+  const wrap = useRef<HTMLDivElement>(null)
   const [{ canDrop, isOver }, target] = useDrop(() => ({
     accept: 'LIB_ITEM',
     drop: (item: DndPlant, monitor) => {
-      const wrapPos = wrap.current.getBoundingClientRect()
-      const offset = monitor.getClientOffset()
+      const wrapPos = wrap.current
+        ? wrap.current.getBoundingClientRect()
+        : { left: 0, top: 0 }
+      const offset = monitor.getClientOffset()!
       const left = Math.round(offset.x - wrapPos.left - item.mouseOffset.x)
       const top = Math.round(offset.y - item.mouseOffset.y)
-      // console.log(wrapPos, offset)
+
       // TODO - fix this
       const newItem = {
         ...item,
