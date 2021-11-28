@@ -9,8 +9,8 @@ interface DropResult {
 
 const cardSource = {
   beginDrag(item: DndPlantWithDragSource, monitor: DragSourceMonitor) {
-    const elem = monitor.getSourceClientOffset()
-    const mouse = monitor.getInitialClientOffset() // mouse offset
+    const elem = monitor.getSourceClientOffset()!
+    const mouse = monitor.getInitialClientOffset()!
     const mouseOffset = {
       x: mouse.x - elem.x,
       y: mouse.y - elem.y,
@@ -23,7 +23,7 @@ const cardSource = {
   },
 }
 
-function collect(connect, monitor: DragSourceMonitor) {
+function collect(connect: any, monitor: DragSourceMonitor) {
   return {
     connectDragSource: connect.dragSource(),
     isDragging: monitor.isDragging(),
