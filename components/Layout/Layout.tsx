@@ -1,23 +1,21 @@
-import React, { ReactNode } from 'react'
-import classes from './Layout.module.css'
+import React, { ReactChild, ReactChildren } from 'react'
+import Head from 'next/head'
+import { ChakraProvider } from '@chakra-ui/react'
+import Menu from '../../components/Menu/Menu'
 
-import { DndProvider } from 'react-dnd'
-import { HTML5Backend } from 'react-dnd-html5-backend'
-
-type Props = {
-  sidebar: ReactNode
-  main: ReactNode
-}
-
-function Layout(props: Props) {
-  const { sidebar, main } = props
+function Layout({ children }: { children: ReactChild | ReactChildren }) {
   return (
-    <DndProvider backend={HTML5Backend}>
-      <main className={classes.grid}>
-        <div>{sidebar}</div>
-        <div>{main}</div>
-      </main>
-    </DndProvider>
+    <>
+      <Head>
+        <title>My Orchard</title>
+        <meta name="description" content="application to manage your orchard" />
+        <link rel="icon" href="/favicon.ico" />
+      </Head>
+      <ChakraProvider>
+        <Menu />
+        {children}
+      </ChakraProvider>
+    </>
   )
 }
 
