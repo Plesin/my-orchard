@@ -9,15 +9,13 @@ function Card(props: CardType) {
     <Box
       p={4}
       display={{ md: 'flex' }}
-      maxWidth="32rem"
+      width="32rem"
       borderWidth={1}
       margin={2}
     >
-      <AspectRatio ratio={1 / 1}>
+      <AspectRatio minW="200px" maxW="500px" ratio={1}>
         <Image
-          maxWidth="200px"
-          margin="auto"
-          src="https://picsum.photos/id/237/250/250"
+          src="https://picsum.photos/id/216/400/400"
           alt="Woman paying for a purchase"
         />
       </AspectRatio>
