@@ -1,16 +1,25 @@
+import { useState, useEffect } from 'react'
 import type { NextPage } from 'next'
-import { Box } from '@chakra-ui/react'
 
 import Layout from '../components/Layout/Layout'
+import Dashboard from '../components/Dashboard/Dashboard'
 import styles from '../styles/Home.module.css'
 
 const Home: NextPage = () => {
+  let [orchards, setOrchards] = useState([])
+
+  useEffect(() => {
+    fetch('/api/orchards')
+      .then((res) => res.json())
+      .then((json) => {
+        setOrchards(json.orchards)
+      })
+  }, [])
+
   return (
     <Layout>
       <div className={styles.container}>
-        <Box bg="tomato" w="100%" p={4} color="white">
-          <h1>Dashboard - TBD</h1>
-        </Box>
+        <Dashboard orchards={orchards} />
       </div>
     </Layout>
   )

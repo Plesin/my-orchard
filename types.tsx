@@ -17,3 +17,16 @@ export interface DndPlantWithDragSource extends DndPlant {
   isDragging: boolean
   connectDragSource: any
 }
+
+export type CardType = {
+  name: string
+  desc: string
+  count: number
+}
+
+export type OrchardType = {
+  id: string
+  name: string
+  desc: string
+  count: number
+}
