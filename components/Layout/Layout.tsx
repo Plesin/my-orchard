@@ -1,7 +1,7 @@
 import React, { ReactChild, ReactChildren } from 'react'
 import Head from 'next/head'
-import { ChakraProvider } from '@chakra-ui/react'
-import Menu from '../../components/Menu/Menu'
+import { Grid, GridItem } from '@chakra-ui/react'
+import Menu from '../Menu/Navigation'
 
 function Layout({ children }: { children: ReactChild | ReactChildren }) {
   return (
@@ -11,10 +11,12 @@ function Layout({ children }: { children: ReactChild | ReactChildren }) {
         <meta name="description" content="application to manage your orchard" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <ChakraProvider>
-        <Menu />
-        {children}
-      </ChakraProvider>
+      <Grid templateColumns="repeat(12, 1fr)" gap={4}>
+        <GridItem colSpan={2}>
+          <Menu />
+        </GridItem>
+        <GridItem colSpan={10}>{children}</GridItem>
+      </Grid>
     </>
   )
 }
