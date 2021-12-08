@@ -1,6 +1,6 @@
 import { useRouter } from 'next/router'
 import React from 'react'
-import { Flex, Menu } from '@chakra-ui/react'
+import { Flex, Menu, useColorModeValue } from '@chakra-ui/react'
 import { HamburgerIcon, SettingsIcon, SunIcon } from '@chakra-ui/icons'
 import NavItem from './NavItem'
 
@@ -12,6 +12,7 @@ const items = [
 
 export default function Navigation() {
   const router = useRouter()
+  const bg = useColorModeValue('gray.50', 'gray.700')
 
   return (
     <Flex
@@ -21,6 +22,7 @@ export default function Navigation() {
       w={'200px'}
       flexDir="column"
       justifyContent="space-between"
+      bg={bg}
     >
       <Flex flexDir="column" w="100%" alignItems={'flex-start'} as="nav">
         <Menu>
