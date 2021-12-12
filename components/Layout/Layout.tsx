@@ -15,7 +15,9 @@ function Layout({ children }: { children: ReactChild | ReactChildren }) {
         <GridItem colSpan={2}>
           <Menu />
         </GridItem>
-        <GridItem colSpan={10}>{children}</GridItem>
+        <GridItem colSpan={10} p={'2rem'}>
+          {children}
+        </GridItem>
       </Grid>
     </>
   )

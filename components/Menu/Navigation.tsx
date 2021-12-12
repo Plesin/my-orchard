@@ -19,7 +19,6 @@ export default function Navigation() {
       pos="sticky"
       h="100vh"
       boxShadow="0 4px 12px 0 rgba(0, 0, 0, 0.05)"
-      w={'200px'}
       flexDir="column"
       justifyContent="space-between"
       bg={bg}

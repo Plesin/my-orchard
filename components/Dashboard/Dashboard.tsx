@@ -6,7 +6,7 @@ export default function Dashboard({ orchards }: { orchards: [OrchardType] }) {
   return (
     <>
       <Heading as="h2">My Orchards</Heading>
-      <Box w="100%" p={4} display="flex" alignItems="center">
+      <Box w="100%" p={'2rem 0'} display="flex" alignItems="center">
         {orchards.map((item) => {
           return (
             <Card
