@@ -1,12 +1,21 @@
-import { Box, Heading, Stack, Text } from '@chakra-ui/react'
+import { Box, Heading, SimpleGrid, Text } from '@chakra-ui/react'
+import { ReactNode } from 'react'
 import type { OrchardType } from '../../types'
 import Card from '../Card/Card'
+
+const H2 = ({ children }: { children: ReactNode }) => {
+  return (
+    <Heading as="h2" my={{ base: '1rem', md: '2rem', lg: '3rem' }}>
+      {children}
+    </Heading>
+  )
+}
 
 export default function Dashboard({ orchards }: { orchards: [OrchardType] }) {
   return (
     <>
-      <Heading as="h2">My Orchards</Heading>
-      <Box w="100%" p={'2rem 0'} display="flex" alignItems="center">
+      <H2>My Orchards</H2>
+      <SimpleGrid columns={{ sm: 1, md: 1, lg: 2, xl: 2 }} spacing={4}>
         {orchards.map((item) => {
           return (
             <Card
@@ -17,8 +26,8 @@ export default function Dashboard({ orchards }: { orchards: [OrchardType] }) {
             />
           )
         })}
-      </Box>
-      <Heading as="h2">Comming Up</Heading>
+      </SimpleGrid>
+      <H2>Comming Up</H2>
       <Box w="100%" p={2}>
         <Box m={'2rem 0'}>
           <Text>
@@ -26,7 +35,7 @@ export default function Dashboard({ orchards }: { orchards: [OrchardType] }) {
           </Text>
         </Box>
       </Box>
-      <Heading as="h2">Weather</Heading>
+      <H2>Weather</H2>
       <Box w="100%" p={2}>
         <Box m={'2rem 0'}>
           <Text>Current weather in your Orchard.</Text>
