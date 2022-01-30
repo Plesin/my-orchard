@@ -30,3 +30,12 @@ export type OrchardType = {
   desc: string
   count: number
 }
+
+export type Tree = {
+  id: string
+  orchardId: string
+  name: string
+  type: string
+  subtype: string
+  datePlanted: Date
+}

@@ -1,15 +1,7 @@
-import { Box, Heading, SimpleGrid, Text } from '@chakra-ui/react'
-import { ReactNode } from 'react'
+import { Box, SimpleGrid, Text } from '@chakra-ui/react'
 import type { OrchardType } from '../../types'
+import H2 from '../H2'
 import Card from '../Card/Card'
-
-const H2 = ({ children }: { children: ReactNode }) => {
-  return (
-    <Heading as="h2" my={{ base: '1rem', md: '2rem', lg: '3rem' }}>
-      {children}
-    </Heading>
-  )
-}
 
 export default function Dashboard({ orchards }: { orchards: [OrchardType] }) {
   return (

@@ -6,6 +6,7 @@ export function makeServer({ environment = 'development' } = {}) {
 
     models: {
       orchard: Model,
+      tree: Model,
     },
 
     seeds(server) {
@@ -21,6 +22,38 @@ export function makeServer({ environment = 'development' } = {}) {
         desc: 'Lovely plums and peaches',
         count: 7,
       })
+      server.create('tree', {
+        id: '1',
+        orchardId: 1,
+        name: 'Sweet Topaz',
+        type: 'apple',
+        subtype: 'Topaz',
+        datePlanted: '12/03/2011',
+      })
+      server.create('tree', {
+        id: '2',
+        orchardId: 1,
+        name: 'Sweet Topaz Small',
+        type: 'apple',
+        subtype: 'Topaz',
+        datePlanted: '12/06/2009',
+      })
+      server.create('tree', {
+        id: '3',
+        orchardId: 1,
+        name: 'Young Chestnut',
+        type: 'chestnut',
+        subtype: '',
+        datePlanted: '03/08/2011',
+      })
+      server.create('tree', {
+        id: '4',
+        orchardId: 1,
+        name: 'Old Appricot',
+        type: 'appricot',
+        subtype: 'Velkopavlovicka',
+        datePlanted: '10/10/1984',
+      })
     },
 
     routes() {
@@ -28,6 +61,10 @@ export function makeServer({ environment = 'development' } = {}) {
 
       this.get('/orchards', (schema) => {
         return schema.orchards.all()
+      })
+
+      this.get('/trees', (schema) => {
+        return schema.trees.all()
       })
 
       // https://github.com/miragejs/miragejs/issues/651
