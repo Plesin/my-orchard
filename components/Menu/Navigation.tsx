@@ -2,11 +2,13 @@ import { useRouter } from 'next/router'
 import React from 'react'
 import { Flex, Menu, useColorModeValue } from '@chakra-ui/react'
 import { HamburgerIcon, SettingsIcon, SunIcon } from '@chakra-ui/icons'
+import { SiGumtree } from 'react-icons/si'
 import NavItem from './NavItem'
 
 const items = [
   { name: 'Dashboard', route: '/', icon: HamburgerIcon },
   { name: 'Orchards', route: '/orchard', icon: SunIcon },
+  { name: 'Trees', route: '/trees', icon: SiGumtree },
   { name: 'Settings', route: '/settings', icon: SettingsIcon },
 ]
 
