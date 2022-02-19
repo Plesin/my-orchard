@@ -35,7 +35,7 @@ function Card(props: CardType) {
         </Box>
         <Box display="flex" alignItems="baseline" mt={'2rem'}>
           <Badge px="2" colorScheme="teal" borderRadius={8}>
-            trees | {count}
+            trees: {count}
           </Badge>
           <Box
             color="gray.500"

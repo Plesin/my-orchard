@@ -1,5 +1,18 @@
 import React, { useEffect, useState } from 'react'
-import { Table, Thead, Tbody, Tr, Th, Td } from '@chakra-ui/react'
+import {
+  Button,
+  Table,
+  Thead,
+  Tbody,
+  Tr,
+  Th,
+  Td,
+  Menu,
+  MenuButton,
+  MenuList,
+  MenuItem,
+} from '@chakra-ui/react'
+import { ChevronDownIcon } from '@chakra-ui/icons'
 import Layout from '../../components/Layout/Layout'
 import H2 from '../../components/H2'
 import type { Tree } from '../../types'
@@ -38,7 +51,18 @@ function Trees() {
                 <Td>{tree.subtype}</Td>
                 <Td>{tree.datePlanted}</Td>
                 <Td>{tree.orchardId}</Td>
-                <Td>Actions TBD</Td>
+                <Td>
+                  <Menu>
+                    <MenuButton
+                      as={Button}
+                      rightIcon={<ChevronDownIcon />}
+                    ></MenuButton>
+                    <MenuList>
+                      <MenuItem>Edit</MenuItem>
+                      <MenuItem>Delete</MenuItem>
+                    </MenuList>
+                  </Menu>
+                </Td>
               </Tr>
             ))}
           </Tbody>
