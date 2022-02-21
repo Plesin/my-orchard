@@ -1,6 +1,11 @@
 import React, { useEffect, useState } from 'react'
 import { useAppSelector, useAppDispatch } from '../../redux/hooks'
-import { loadTrees, selectTrees, selectStatus } from '../../redux/treesSlice'
+import {
+  loadTrees,
+  selectTrees,
+  selectStatus,
+  resetState,
+} from '../../redux/treesSlice'
 import {
   Button,
   Table,
@@ -13,12 +18,11 @@ import {
   MenuButton,
   MenuList,
   MenuItem,
-  Spinner,
-  Stack,
 } from '@chakra-ui/react'
 import { ChevronDownIcon } from '@chakra-ui/icons'
 import Layout from '../../components/Layout/Layout'
 import H2 from '../../components/H2'
+import Spinner from '../../components/Spinner'
 import type { Tree } from '../../types'
 
 function Trees() {
@@ -28,6 +32,9 @@ function Trees() {
 
   useEffect(() => {
     dispatch(loadTrees())
+    return () => {
+      dispatch(resetState())
+    }
   }, [dispatch])
 
   return (
@@ -35,15 +42,7 @@ function Trees() {
       <main>
         <H2>All Trees</H2>
         {status === 'loading' ? (
-          <Stack direction="row" spacing={4} justifyContent="center">
-            <Spinner
-              thickness="4px"
-              speed="0.65s"
-              emptyColor="teal.700"
-              color="green.600"
-              size="xl"
-            />
-          </Stack>
+          <Spinner />
         ) : (
           <Table variant="striped" colorScheme="teal">
             <Thead>

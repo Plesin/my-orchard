@@ -20,7 +20,12 @@ export const loadTrees = createAsyncThunk('api/trees', async () => {
 export const treesSlice = createSlice({
   name: 'trees',
   initialState,
-  reducers: {},
+  reducers: {
+    resetState: (state) => {
+      state.items = []
+      state.status = 'idle'
+    },
+  },
   extraReducers: (builder) => {
     builder
       .addCase(loadTrees.pending, (state) => {
@@ -33,6 +38,7 @@ export const treesSlice = createSlice({
   },
 })
 
+export const { resetState } = treesSlice.actions
 export const selectTrees = (state: AppState) => state.trees.items
 export const selectStatus = (state: AppState) => state.trees.status
 
