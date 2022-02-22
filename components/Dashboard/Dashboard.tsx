@@ -3,7 +3,7 @@ import type { OrchardType } from '../../types'
 import H2 from '../H2'
 import Card from '../Card/Card'
 
-export default function Dashboard({ orchards }: { orchards: [OrchardType] }) {
+export default function Dashboard({ orchards }: { orchards: OrchardType[] }) {
   return (
     <>
       <H2>My Orchards</H2>

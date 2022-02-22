@@ -24,6 +24,7 @@ function Library() {
           key={item.id}
           left={item.left}
           top={item.top}
+          mouseOffset={{ x: item.left, y: item.top }}
         />
       ))}
     </div>

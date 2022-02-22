@@ -1,9 +1,9 @@
 import { render, screen } from '@testing-library/react'
-import ColorModeForm from './ColorModeForm'
+import SettingsForm from './index'
 
-describe('<ColorModeForm />', () => {
+describe('<SettingsForm />', () => {
   it('renders light and dark radio buttons', () => {
-    render(<ColorModeForm />)
+    render(<SettingsForm />)
 
     const radios = screen.getAllByRole('radio')
     expect(radios).toHaveLength(2)

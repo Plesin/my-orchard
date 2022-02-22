@@ -20,9 +20,9 @@ import {
   MenuItem,
 } from '@chakra-ui/react'
 import { ChevronDownIcon } from '@chakra-ui/icons'
-import Layout from '../../components/Layout/Layout'
-import H2 from '../../components/H2'
-import Spinner from '../../components/Spinner'
+import Layout from 'components/Layout/Layout'
+import H2 from 'components/H2'
+import Spinner from 'components/Spinner'
 import type { Tree } from '../../types'
 
 function Trees() {
