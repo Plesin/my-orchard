@@ -7,7 +7,7 @@ import {
   FormLabel,
 } from '@chakra-ui/react'
 
-function ColorModeForm() {
+function SettingsForm() {
   const { colorMode, toggleColorMode } = useColorMode()
   const onChange = (value: string) => {
     if (colorMode !== value) {
@@ -27,4 +27,4 @@ function ColorModeForm() {
   )
 }
 
-export default ColorModeForm
+export default SettingsForm

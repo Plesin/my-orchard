@@ -1,11 +1,12 @@
 import { useState, useEffect } from 'react'
 import type { NextPage } from 'next'
 
-import Layout from '../components/Layout/Layout'
-import Dashboard from '../components/Dashboard/Dashboard'
+import type { OrchardType } from '../types'
+import Layout from 'components/Layout/Layout'
+import Dashboard from 'components/Dashboard/Dashboard'
 
 const Home: NextPage = () => {
-  let [orchards, setOrchards] = useState([])
+  let [orchards, setOrchards] = useState<OrchardType[]>([])
 
   useEffect(() => {
     fetch('/api/orchards')

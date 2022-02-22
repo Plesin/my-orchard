@@ -5,9 +5,9 @@ import { HTML5Backend } from 'react-dnd-html5-backend'
 import { v4 as uuidv4 } from 'uuid'
 
 import type { PlantType } from '../../types'
-import Layout from '../../components/Layout/Layout'
-import Library from '../../components/Library/Library'
-import Canvas from '../../components/Canvas/Canvas'
+import Layout from 'components/Layout/Layout'
+import Library from 'components/Library/Library'
+import Canvas from 'components/Canvas/Canvas'
 import classes from './index.module.css'
 
 function Orchard() {
