@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from 'react'
-import { useAppSelector, useAppDispatch } from '../../redux/hooks'
+import { useAppSelector, useAppDispatch } from 'redux/hooks'
 import {
   loadTrees,
   selectTrees,
   selectStatus,
   resetState,
-} from '../../redux/treesSlice'
+} from 'redux/treesSlice'
 import {
   Button,
   Table,
@@ -23,7 +23,7 @@ import { ChevronDownIcon } from '@chakra-ui/icons'
 import Layout from 'components/Layout/Layout'
 import H2 from 'components/H2'
 import Spinner from 'components/Spinner'
-import type { Tree } from '../../types'
+import type { Tree } from 'types'
 
 function Trees() {
   const dispatch = useAppDispatch()

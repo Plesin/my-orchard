@@ -1,25 +1,33 @@
 import { useState, useEffect } from 'react'
 import type { NextPage } from 'next'
+import { useAppSelector, useAppDispatch } from 'redux/hooks'
+import {
+  loadOrchards,
+  selectOrchards,
+  selectStatus,
+  resetState,
+} from 'redux/orchardsSlice'
 
-import type { OrchardType } from '../types'
 import Layout from 'components/Layout/Layout'
 import Dashboard from 'components/Dashboard/Dashboard'
+import Spinner from 'components/Spinner'
 
 const Home: NextPage = () => {
-  let [orchards, setOrchards] = useState<OrchardType[]>([])
+  const dispatch = useAppDispatch()
+  const orchards = useAppSelector(selectOrchards)
+  const status = useAppSelector(selectStatus)
 
   useEffect(() => {
-    fetch('/api/orchards')
-      .then((res) => res.json())
-      .then((json) => {
-        setOrchards(json.orchards)
-      })
-  }, [])
+    dispatch(loadOrchards())
+    return () => {
+      dispatch(resetState())
+    }
+  }, [dispatch])
 
   return (
     <Layout>
       <div>
-        <Dashboard orchards={orchards} />
+        {status === 'loading' ? <Spinner /> : <Dashboard orchards={orchards} />}
       </div>
     </Layout>
   )

@@ -1,10 +1,12 @@
 import { configureStore, ThunkAction, Action } from '@reduxjs/toolkit'
 import treesReducer from './treesSlice'
+import orchardsReducer from './orchardsSlice'
 
 export function makeStore() {
   return configureStore({
     reducer: {
       trees: treesReducer,
+      orchards: orchardsReducer,
     },
   })
 }
