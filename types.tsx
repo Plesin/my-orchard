@@ -37,5 +37,5 @@ export type Tree = {
   name: string
   type: string
   subtype: string
-  datePlanted: Date
+  datePlanted: string
 }
