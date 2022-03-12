@@ -51,6 +51,7 @@ export const treesSlice = createSlice({
       .addCase(loadTree.fulfilled, (state, action) => {
         state.status = 'idle'
         // TODO fix ts by normalizing state
+        // @ts-ignore
         state.items.push(action.payload)
       })
   },
