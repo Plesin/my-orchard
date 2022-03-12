@@ -32,7 +32,7 @@ export type OrchardType = {
 }
 
 export type Tree = {
-  id: string
+  _id: string
   orchardId: string
   name: string
   type: string

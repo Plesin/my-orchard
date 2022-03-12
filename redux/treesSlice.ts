@@ -1,6 +1,8 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit'
 import { AppState } from './store'
-import { fetchTrees } from './api'
+import { fetchTrees, fetchTreeById } from './api'
+
+type Querytype = string | string[] | undefined
 
 export interface TreesState {
   items: []
@@ -16,6 +18,14 @@ export const loadTrees = createAsyncThunk('api/trees', async () => {
   const response = await fetchTrees()
   return response
 })
+
+export const loadTree = createAsyncThunk(
+  `api/fetchTreeById`,
+  async (treeId: string) => {
+    const response = await fetchTreeById(treeId)
+    return response
+  }
+)
 
 export const treesSlice = createSlice({
   name: 'trees',
@@ -34,6 +44,14 @@ export const treesSlice = createSlice({
       .addCase(loadTrees.fulfilled, (state, action) => {
         state.status = 'idle'
         state.items = action.payload
+      })
+      .addCase(loadTree.pending, (state) => {
+        state.status = 'loading'
+      })
+      .addCase(loadTree.fulfilled, (state, action) => {
+        state.status = 'idle'
+        // TODO fix ts by normalizing state
+        state.items.push(action.payload)
       })
   },
 })

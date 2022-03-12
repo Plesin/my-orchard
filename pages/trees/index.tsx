@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { useAppSelector, useAppDispatch } from 'redux/hooks'
+import Link from 'next/link'
 import {
   loadTrees,
   selectTrees,
@@ -57,7 +58,7 @@ function Trees() {
             </Thead>
             <Tbody>
               {trees.map((tree: Tree) => (
-                <Tr key={tree.id}>
+                <Tr key={tree._id}>
                   <Td>{tree.name}</Td>
                   <Td>{tree.type}</Td>
                   <Td>{tree.subtype}</Td>
@@ -70,7 +71,9 @@ function Trees() {
                         rightIcon={<ChevronDownIcon />}
                       ></MenuButton>
                       <MenuList>
-                        <MenuItem>Edit</MenuItem>
+                        <Link href={`/trees/${tree._id}`} passHref>
+                          <MenuItem>Show Detail</MenuItem>
+                        </Link>
                         <MenuItem>Delete</MenuItem>
                       </MenuList>
                     </Menu>
