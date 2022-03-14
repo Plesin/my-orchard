@@ -7,7 +7,8 @@
     "start": "next start",
     "lint": "next lint",
     "test": "jest --watch",
-    "test_ci": "jest"
+    "test_ci": "jest",
+    "cypress": "cypress open"
   },
   "dependencies": {
     "@chakra-ui/icons": "1.1.1",
@@ -27,6 +28,7 @@
     "uuid": "8.3.2"
   },
   "devDependencies": {
+    "@testing-library/cypress": "8.0.2",
     "@testing-library/dom": "8.11.1",
     "@testing-library/jest-dom": "5.16.1",
     "@testing-library/react": "12.1.2",
@@ -34,6 +36,7 @@
     "@types/node": "16.11.8",
     "@types/react": "17.0.35",
     "@types/react-test-renderer": "17.0.1",
+    "cypress": "9.5.1",
     "eslint": "7.32.0",
     "eslint-config-next": "12.0.4",
     "jest": "27.4.5",
